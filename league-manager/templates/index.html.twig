@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Index{% endblock %}
+
+{% block body %}
+    <div class="text-center">
+        {% for sport, link in links %}
+            <a href="{{ link }}">
+                <img src="{{ asset("static/img/sport/" ~ sport ~ ".svg") }}" width="100" class="m-3">
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

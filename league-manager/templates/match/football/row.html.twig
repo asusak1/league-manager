@@ -1,0 +1,20 @@
+<div class="row justify-content-md-center">
+    <div class="col col-lg-2 text-left">
+        {% if match.winnerCode == 1 %}
+            <b>{{ match.homeCompetitor.name }}</b>
+        {% else %}
+            {{ match.homeCompetitor.name }}
+        {% endif %}        </div>
+    <div class="col-md-auto text-center">
+        {{ match.homeScore.final }} : {{ match.awayScore.final }}
+        <br>
+        ({{ match.homeScore.halftime }} : {{ match.awayScore.halftime }})
+    </div>
+    <div class="col col-lg-2 text-right">
+        {% if match.winnerCode == 2 %}
+            <b>{{ match.awayCompetitor.name }}</b>
+        {% else %}
+            {{ match.awayCompetitor.name }}
+        {% endif %}
+    </div>
+</div>

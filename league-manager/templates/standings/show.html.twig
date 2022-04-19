@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Standings{% endblock %}
+
+{% block body %}
+    <h1 class="text-center mb-5 mt-3 font-weight-bold">
+        {{ competition.name }}: {{ season.name }}
+        <img class="ml-2" src="{{ asset("static/img/sport/" ~ sport.name ~ ".svg") }}" width="30">
+    </h1>
+    <table class="table mb-5">
+        <thead>
+        {% include "standings_row/" ~  sport.name  ~ "/header.html.twig" %}
+        </thead>
+        <tbody>
+        {% set index = 0 %}
+        {% for standingsRow in standingsRows %}
+            {% include "standings_row/" ~  sport.name  ~ "/row.html.twig" with { "position": index + 1} %}
+            {% set index = index + 1 %}
+        {% endfor %}
+        </tbody>
+    </table>
+    <h3 class="mt-1 mb-3 text-center font-weight-bold">Results</h3>
+
+    {% for date, matches in groupedMatches %}
+        <h4 class="mt-1 pl-5">{{ date }}</h4>
+        <div class="container mb-5">
+            {% for match in matches %}
+                {% include "match/" ~  sport.name  ~ "/row.html.twig" %}
+                <hr>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

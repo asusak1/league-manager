@@ -1,0 +1,5 @@
+sb_redis:
+    clients:
+        default:
+            $options:    []
+            $parameters: ['%env(resolve:REDIS_URL)%']
